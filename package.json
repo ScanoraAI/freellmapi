@@ -14,9 +14,22 @@
     "build:server": "npm run build -w server",
     "desktop:dev": "npm run build -w client && npm --prefix desktop run dev",
     "desktop:dist": "npm run build -w client && npm --prefix desktop run dist",
-    "desktop:dist:win": "npm run build -w client && npm --prefix desktop run dist:win"
+    "desktop:dist:win": "npm run build -w client && npm --prefix desktop run dist:win",
+    "postinstall": "bash scripts/patch-sqlite.sh"
   },
   "devDependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.1.2",
+    "node-gyp": "^9.4.1"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.6.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "helmet": "^8.2.0",
+    "socks-proxy-agent": "^10.1.0",
+    "undici": "^8.5.0",
+    "zod": "^4.4.3"
   }
 }
