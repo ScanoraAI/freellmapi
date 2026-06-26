@@ -13,7 +13,8 @@ jobs:
             cd /etc/yum.repos.d/ &&
             sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* &&
             sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-* &&
-            yum install -y gcc-c++ make python3 &&
+            yum install -y gcc-c++ make python39 &&
+            update-alternatives --set python /usr/bin/python3.9 &&
             curl -fsSL https://rpm.nodesource.com/setup_24.x | bash - &&
             yum install -y nodejs &&
             npm install better-sqlite3@9.6.0 &&
