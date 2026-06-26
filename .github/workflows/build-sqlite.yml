@@ -17,11 +17,10 @@ jobs:
             alternatives --set python3 /usr/bin/python3.8 &&
             curl -fsSL https://rpm.nodesource.com/setup_24.x | bash - &&
             yum install -y nodejs &&
-            yum install -y centos-release-scl &&
-            yum install -y devtoolset-10-gcc devtoolset-10-gcc-c++ &&
+            yum install -y gcc-toolset-10-gcc gcc-toolset-10-gcc-c++ &&
             cd /output &&
             npm cache clean --force &&
-            scl enable devtoolset-10 -- npm install better-sqlite3@7.6 &&
+            scl enable gcc-toolset-10 -- npm install better-sqlite3@7.6 &&
             cp node_modules/better-sqlite3/build/Release/better_sqlite3.node /output/
           "
       
