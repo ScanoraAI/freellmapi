@@ -7,21 +7,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Build in AlmaLinux 8 container
+      - name: Build and patch binary
         run: |
-          docker run --rm -v $PWD:/output almalinux:8 bash -c "
-            yum install -y gcc-toolset-10-gcc-c++ make python38 &&
-            alternatives --set python3 /usr/bin/python3.8 &&
-            curl -fsSL https://rpm.nodesource.com/setup_24.x | bash - &&
-            yum install -y nodejs &&
-            source /opt/rh/gcc-toolset-10/enable &&
+          docker run --rm -v $PWD:/output ubuntu:20.04 bash -c "
+            apt-get update &&
+            apt-get install -y nodejs npm python3 curl patchelf &&
+            curl -fsSL https://deb.nodesource.com/setup_24.x | bash - &&
+            apt-get install -y nodejs &&
             cd /output &&
             npm cache clean --force &&
             npm install better-sqlite3@9.6.0 &&
+            patchelf --clear-symbol-version log node_modules/better-sqlite3/build/Release/better_sqlite3.node &&
+            patchelf --clear-symbol-version pow node_modules/better-sqlite3/build/Release/better_sqlite3.node &&
+            patchelf --clear-symbol-version log2 node_modules/better-sqlite3/build/Release/better_sqlite3.node &&
+            patchelf --clear-symbol-version exp node_modules/better-sqlite3/build/Release/better_sqlite3.node &&
             cp node_modules/better-sqlite3/build/Release/better_sqlite3.node /output/
           "
       
       - uses: actions/upload-artifact@v4
         with:
-          name: better-sqlite3-almalinux8-node24
+          name: better-sqlite3-ubuntu2004-node24
           path: better_sqlite3.node
