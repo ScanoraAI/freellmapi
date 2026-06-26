@@ -18,7 +18,7 @@ jobs:
 
       - name: Build better-sqlite3
         run: |
-          npm install better-sqlite3@9.1.1
+          npm install better-sqlite3@10.4.1
           patchelf --clear-symbol-version log node_modules/better-sqlite3/build/Release/better_sqlite3.node
           patchelf --clear-symbol-version pow node_modules/better-sqlite3/build/Release/better_sqlite3.node
           patchelf --clear-symbol-version log2 node_modules/better-sqlite3/build/Release/better_sqlite3.node
