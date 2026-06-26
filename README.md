@@ -28,6 +28,7 @@ Aggregate the free tiers from Google, Groq, Cerebras, NVIDIA, Mistral, OpenRoute
 - [Quick start](#quick-start)
 - [Docker](#docker)
 - [Desktop app](#desktop-app)
+- [Languages](#languages)
 - [Premium (live catalog)](#premium-live-catalog)
 - [Using the API](#using-the-api)
 - [Screenshots](#screenshots)
@@ -224,6 +225,26 @@ npm run desktop:dist:win    # Windows → "desktop/dist-electron/FreeLLMAPI Setu
 
 > Locally built apps are unsigned, so Windows SmartScreen may warn on first run
 > ("More info" → "Run anyway"); the macOS build launches without Gatekeeper prompts.
+
+## Languages
+
+The dashboard and the desktop tray ship in 6 languages. The UI auto-detects your
+browser/system language on first load and you can switch any time from the **⋯**
+menu; the choice is remembered.
+
+| Language | Locale |
+| --- | --- |
+| English | `en` |
+| 中文 (简体) | `zh-CN` |
+| Français | `fr` |
+| Español | `es` |
+| Português (Brasil) | `pt-BR` |
+| Italiano | `it` |
+
+Translations live in [`client/src/i18n/locales/`](./client/src/i18n/locales) as
+flat JSON files. To add a language, copy `en.json`, translate the values, and
+register the locale in `client/src/i18n/I18nProvider.tsx` (and
+`desktop/src/i18n.ts` for the tray strings) — PRs welcome.
 
 ## Premium (live catalog)
 
@@ -604,6 +625,8 @@ PRs should include a test, keep the existing test suite green, and match the `.e
 <a href="https://github.com/chirag127"><img src="https://images.weserv.nl/?url=github.com/chirag127.png&w=60&h=60&fit=cover&mask=circle" width="60" alt="@chirag127" /></a>
 <a href="https://github.com/jasnoorgill"><img src="https://images.weserv.nl/?url=github.com/jasnoorgill.png&w=60&h=60&fit=cover&mask=circle" width="60" alt="@jasnoorgill" /></a>
 <a href="https://github.com/allababbot"><img src="https://images.weserv.nl/?url=github.com/allababbot.png&w=60&h=60&fit=cover&mask=circle" width="60" alt="@allababbot" /></a>
+<a href="https://github.com/johan-droid"><img src="https://images.weserv.nl/?url=github.com/johan-droid.png&w=60&h=60&fit=cover&mask=circle" width="60" alt="@johan-droid" /></a>
+<a href="https://github.com/redenfire"><img src="https://images.weserv.nl/?url=github.com/redenfire.png&w=60&h=60&fit=cover&mask=circle" width="60" alt="@redenfire" /></a>
 
 ## Terms of Service review
 
