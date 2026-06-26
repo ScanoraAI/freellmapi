@@ -20,7 +20,7 @@ jobs:
             cd /output &&
             npm cache clean --force &&
             export CXXFLAGS='-std=gnu++17' &&
-            npm install better-sqlite3@9.6.0 &&
+            npm install better-sqlite3@8.1.0 &&
             cp node_modules/better-sqlite3/build/Release/better_sqlite3.node /output/
           "
       
