@@ -17,9 +17,12 @@ jobs:
             alternatives --set python3 /usr/bin/python3.8 &&
             curl -fsSL https://rpm.nodesource.com/setup_24.x | bash - &&
             yum install -y nodejs &&
+            cd /output &&
+            npm cache clean --force &&
             npm install better-sqlite3@9.6.0 &&
             cp node_modules/better-sqlite3/build/Release/better_sqlite3.node /output/
           "
+      
       - uses: actions/upload-artifact@v4
         with:
           name: better-sqlite3-centos8-node24
